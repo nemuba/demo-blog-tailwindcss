@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .nav-item {
+    @apply text-gray-500;
+    @apply block;
+    @apply text-center;
+    @apply font-semibold;
+    @apply text-gray-500;
+    @apply text-lg;
+    @apply px-2;
+    @apply py-4;
+    @apply transition duration-300;
+  }
+
+  .btn-signin {
+    @apply py-2;
+    @apply px-2;
+    @apply font-medium;
+    @apply text-gray-500;
+    @apply rounded;
+    @apply transition;
+    @apply duration-300;
+  }
+
+  .btn-signup {
+    @apply py-2;
+    @apply px-2;
+    @apply font-medium;
+    @apply text-white;
+    @apply bg-green-500;
+    @apply rounded;
+    @apply transition;
+    @apply duration-300;
+  }
+
+  .form-label {
+    @apply block;
+    @apply text-gray-700;
+    @apply text-sm;
+    @apply font-bold;
+    @apply mb-2;
+  }
+
+  .form-control {
+    @apply shadow;
+    @apply appearance-none;
+    @apply border;
+    @apply rounded;
+    @apply w-full;
+    @apply py-2;
+    @apply px-3;
+    @apply text-gray-700;
+    @apply leading-tight;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500;
+    @apply text-white;
+    @apply font-bold;
+    @apply py-2;
+    @apply px-4;
+    @apply rounded;
+    @apply transition;
+    @apply duration-300;
+  }
+
+  @variants {
+    .nav-item:hover {
+      @apply bg-green-500;
+      @apply text-white;
+    }
+
+    .btn-signin:hover {
+      @apply bg-green-500;
+      @apply text-white;
+    }
+
+    .btn-signup:hover {
+      @apply bg-green-400;
+    }
+
+    .form-control:focus {
+      @apply border-green-500;
+    }
+
+    .btn-primary:hover {
+      @apply bg-blue-700;
+    }
+
+    .btn-primary:focus {
+      @apply bg-blue-700;
+    }
+  }
+
+}
