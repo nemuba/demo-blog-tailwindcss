@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(comment) do %>
+  <div class="w-full border-b shadow-md p-2 rounded-md p-4">
+    <p><%= comment.user.name %></p>
+    <%= comment.message %>
+    <p class="text-gray-500 font-normal">Criado em: <%= comment.created_at.strftime('%d/%m/%Y') %></p>
+
+    <% if user_signed_in? && current_user.id == comment.user_id %>
+      <%= button_to 'Excluir', 
+        post_comment_path(comment.post, comment),
+        method: :delete,
+        class: 'btn-danger p-2 mt-4',
+        data: { controller: 'confirm', confirm_message_value: t('messages.delete'), action: 'click->confirm#destroy'}
+      %>
+    <% end %>
+  </div>
+<% end %>

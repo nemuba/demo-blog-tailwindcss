@@ -1,15 +1,39 @@
-<div id="<%= dom_id post %>" class="scaffold_record">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+<%= turbo_frame_tag dom_id(post) do %>
+  <div class="w-12/12 p-5 border-b shadow-md mt-3 rounded-md">
+    <h1 class="text-3xl text-gray-500">
+      <%= post.title %>
+    </h1>
 
-  <p>
-    <strong>User:</strong>
-    <%= post.user_id %>
-  </p>
+    <p class="text-gray-400 mb-5">
+      <strong class="text-gray-400">Author:</strong>
+      <%= post.user.name %>
+      <strong class="text-gray-400 ml-4">Published:</strong>
+      <%= post.created_at.strftime('%d/%m/%Y') %>
+    </p>
 
-  <p>
-    <%= link_to "Show this post", post %>
-  </p>
-</div>
+    <%= post.content %>
+
+    <div class="w-full flex items-center justify-between">
+      <%= link_to "Continue lendo post", post, class: 'underline text-gray-600', 'data-turbo-frame': '_top' %>
+      <p class="font-bold text-gray-600">Curtidas <%= post.likes.size %></p>
+      <p class="font-bold text-gray-600">Comentários <%= post.comments.size %></p>
+
+      <% if user_signed_in? %>
+        <% if liked?(post)  %>
+          <%= button_to "Dislike",
+            post_like_path(post, current_user),
+            data: { controller: 'form', action: 'form#clear', 'turbo-frame': '_self'},
+            method: :delete,
+            class: 'btn-danger p-2'
+          %>
+        <% else %>
+          <%= button_to "Like",
+            post_likes_path(post),
+            class: 'btn-success',
+            data: { controller: 'form', action: 'form#clear', 'turbo-frame': '_self'}
+          %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

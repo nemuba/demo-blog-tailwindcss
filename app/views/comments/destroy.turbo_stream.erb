@@ -1,0 +1,14 @@
+<%= turbo_stream.replace 'notice_comment' do %>
+  <%= turbo_frame_tag :notice_comment %>
+<% end %>
+
+<%= notice_comment_stream(message: t('comment.messages.destroy'), status: :error) %>
+
+
+<%= turbo_stream.replace :total_comments do %>
+  <%= turbo_frame_tag :total_comments do %>
+    <h1 class="text-4xl text-gray-600 p-2 mt-5"><%= @comment.post.comments.size %> Comentários </h1>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.remove @comment %>

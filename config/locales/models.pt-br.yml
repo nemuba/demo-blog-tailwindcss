@@ -1,0 +1,13 @@
+pt-br:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+    attributes:
+      post:
+        id: id
+        title: Titulo
+        content: Conteúdo
+        created_at: Criado em
+        updated_at: Atualizado em

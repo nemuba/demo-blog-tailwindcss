@@ -19,6 +19,7 @@
 					<div class="hidden md:flex items-center space-x-3 ">
 			  		<% if user_signed_in? %>
 							<%= button_to 'Logout', destroy_session_path, method: :delete, class: 'btn-sigin' %>
+							<%= link_to 'Criar Post', new_post_path, class: 'btn-primary' %>
 						<% else %>
 							<%= link_to 'Login', new_session_path, class: 'btn-sigin' %>
 							<%= link_to 'Register', new_registration_path, class: 'btn-signup' %>
@@ -48,7 +49,8 @@
 					<li class="">
 						<%= link_to 'Home', root_path, class: 'nav-item' %>
 						<% if user_signed_in? %>
-							<%= button_to 'Logout', destroy_session_path, method: :delete, class: 'nav-item' %>
+							<%= link_to 'Criar Post', new_post_path, class: 'nav-item', 'data-turbo-frame': '_top' %>
+							<%= button_to 'Logout', destroy_session_path, method: :delete, class: 'nav-item w-full' %>
 						<% else %>
 							<%= link_to 'Login', new_session_path, class: 'nav-item' %>
 							<%= link_to 'Register', new_registration_path, class: 'nav-item' %>

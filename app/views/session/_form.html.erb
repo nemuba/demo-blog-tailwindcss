@@ -1,4 +1,11 @@
-<%= form_with(model: user, url: '/login', html: { class: "bg-white rounded px-8 pt-6 pb-8" }) do |form| %>
+<%= form_with(
+  model: user,
+  url: '/login',
+  html: {
+    class: "bg-white rounded px-8 pt-6 pb-8",
+    data: { controller: 'form', action: 'submit->form#clear'}
+  }
+) do |form| %>
   <div class="my-5">
     <%= form.label :email, class: 'form-label' %>
     <%= form.email_field :email, class: 'form-control', placeholder: 'Email' %>

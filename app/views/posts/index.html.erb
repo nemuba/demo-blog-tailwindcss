@@ -1,9 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_frame_tag :posts do %>
+  <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Posts </h1>
 
-<h1>Post</h1>
+  <% unless @posts.present? %>
+    <div class="w-full justify-center">
+      <h1 class="font-bold text-4xl text-gray-400 mt-10 text-center w-full inline-block">
+        Nenhum post cadastrado !
+      </h1>
 
-<div id="posts">
-  <%= render @posts %>
-</div>
+      <% if user_signed_in? %>
+        <%= link_to 'Criar post', new_post_path, class: 'mx-auto mt-10 p-2 bg-blue-700 text-white text-center rounded-md block w-2/12', 'data-turbo-frame': '_top' %>
+      <% end %>
+    </div>
+  <% end %>
 
-<%= link_to "New post", new_post_path %>
+  <% unless user_signed_in? %>
+    <p class="font-4xl text-center text-lg tex-gray-500 mt-5">
+      Faça 
+      <%= link_to 'login', login_path, class: 'font-bold text-lg text-blue-500 underline', 'data-turbo-frame': '_top' %> 
+      ou 
+      <%= link_to 'registre-se', new_registration_path, class: 'font-bold text-lg text-green-500 underline', 'data-turbo-frame': '_top' %> 
+      para criar um post.
+    </p>
+  <% end %>
+
+  <div class="w-full">
+    <%= render @posts %>
+  </div>
+
+<% end %>

@@ -1,7 +1,15 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with(
+  model: post,
+  html: {
+    data: { 
+      controller: 'form', 
+      action: 'submit->form#clear',
+    },
+    class: 'mx-20 border-b shadow-lg px-10'
+  }) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div class="w-full p-2 border border-red-500 rounded-md mt-5">
+      <h2 class="font-bold"><%= t('errors.template.header.other', model: post.model_name ,count: post.errors.count) %></h2>
 
       <ul>
         <% post.errors.each do |error| %>
@@ -11,17 +19,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="my-5">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="my-5">
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="my-5">
+    <%= form.label :content, class: 'form-label' %>
+    <%= form.rich_text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="my-5 flex items-center justify-between">
+    <%= form.submit class: 'btn-primary' %>
+    <%= link_to "Voltar", root_path, class: 'btn-primary bg-red-500 hover:bg-red-700', 'data-turbo-frame': '_top' %>
   </div>
 <% end %>

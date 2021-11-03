@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :new_comment do %>
+  <div class="w-full">
+    <h1 class="text-3xl text-gray-500 ml-10 mt-5" >Cadastrar comentário</h1>
+    <%= javascript_tag('document.querySelector("trix-editor").focus();') %>
+    <%= render 'form', comment: @comment %>
+  </div>
+<% end %>

@@ -1,10 +1,75 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_frame_tag dom_id(@post) do %>
+  <% if notice %>
+    <%= turbo_frame_tag :notice do %>
+      <%= notice_stream(message: notice, status: :info) %>
+    <% end %>
+  <% end %>
 
-<%= render @post %>
+  <div class="w-full p-5 border-b shadow-md mt-3">
+    <div class="flex items-center justify-between">
+      <%= link_to "Home", 
+        root_path,
+        class: 'btn-primary px-5 mb-5',
+        'data-turbo-frame': '_top'
+      %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <%= link_to "Editar", edit_post_path(@post), class: 'btn-success px-5 mb-5' %>
+        <%= button_to "Remover", 
+          post_path(@post),
+          class: 'btn-danger px-5 mb-4',
+          method: :delete,
+          'data-turbo-frame': '_top',
+          data: { controller: 'confirm', confirm_message_value: t('messages.delete'), action: 'click->confirm#destroy'}
+        %>
+      <% end %>
+    </div>
 
-  <%= button_to "Destroy this post", post_path(@post), method: :delete %>
-</div>
+    <h1 class="text-3xl text-gray-500">
+      <%= @post.title %>
+    </h1>
+
+    <p class="text-gray-600 mb-5">
+      <strong class="text-gray-500">Author:</strong>
+      <%= @post.user.name %>
+      <strong class="text-gray-400 ml-4">Published:</strong>
+      <%= @post.created_at.strftime('%d/%m/%Y') %>
+    </p>
+
+    <%= @post.content %>
+
+    <div class="mt-5 mb-2s">
+      <span class="text-gray-500">Likes <%= @post.likes.size %></span>
+    </div>
+
+      <div class="border-t border-gray-300 w-full mt-5">
+        <%= turbo_frame_tag :total_comments do %>
+          <h1 class="text-4xl text-gray-600 p-2 mt-5"><%= @post.comments.size %> Comentários </h1>
+        <% end %>
+
+        <%= turbo_frame_tag :notice_comment %>
+
+        <%= turbo_frame_tag :comments do %>
+          <%= render @post.comments %>
+        <% end %>
+      </div>
+
+    <% if user_signed_in? %>
+      <div class="w-full my-5">
+        <%= link_to  'Criar comentário' , new_post_comment_path(@post) , class: 'btn-primary', 'data-turbo-frame': 'new_comment' %>
+
+        <%= turbo_frame_tag :new_comment %>
+      </div>
+    <% else %>
+      <div class="w-full my-5">
+        <p class="font-4xl text-center text-lg tex-gray-500 mt-5">
+          Faça 
+          <%= link_to 'login', login_path, class: 'font-bold text-lg text-blue-500 underline', 'data-turbo-frame': '_top' %> 
+          ou 
+          <%= link_to 'registre-se', new_registration_path, class: 'font-bold text-lg text-green-500 underline', 'data-turbo-frame': '_top' %> 
+          para criar um comentário.
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

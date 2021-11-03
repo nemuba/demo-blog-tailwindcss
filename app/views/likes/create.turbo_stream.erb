@@ -1,0 +1,9 @@
+<%= turbo_stream.replace 'notice' do %>
+  <%= turbo_frame_tag :notice %>
+<% end %>
+
+<%= notice_stream(message: t('like.messages.create'), status: :success ) %>
+
+<%= turbo_stream.replace @post do %>
+  <%= render partial: 'posts/post', locals: { post: @post } %>
+<% end %>

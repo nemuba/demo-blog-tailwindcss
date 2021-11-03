@@ -13,16 +13,16 @@ class SessionController < ApplicationController
 
     if @user&.authenticate(session_params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path, notice: 'Logged in'
+      redirect_to root_path, notice: t('login.message')
     else
-      redirect_to login_path, notice: 'Invalid email or password'
+      redirect_to login_path, alert: t('login.error')
     end
   end
 
   # DELETE /logout
   def destroy
     session.delete(:user_id)
-    redirect_to login_path, notice: 'Logged out'
+    redirect_to login_path, notice: t('logout.message')
   end
 
   private

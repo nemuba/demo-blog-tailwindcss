@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :posts
-  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # Almost every application defines a route for the root path ("/") at the top of this file.
   root 'home#index'
+  get '/clear_message', to: 'home#clear_message'
 
-  resources :users
+  resources :posts do
+    resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[new create destroy]
+  end
 
   get '/login', to: 'session#index', as: 'new_session'
   post '/login', to: 'session#create'

@@ -1,10 +1,18 @@
-<h1>Editing post</h1>
+<%= turbo_frame_tag dom_id(@post) do %>
 
-<%= render "form", post: @post %>
+  <div class="w-full p-5 border-b shadow-md mt-3">
+    <div class="my-5 w-full px-24">
+      <%= button_to 'Excluir Post',
+        post_path(@post),
+        method: :delete,
+        class: 'btn-danger mx-4',
+        'data-turbo-frame': '_top',
+        data: { controller: 'confirm', confirm_message_value: t('messages.delete'), action: 'click->confirm#destroy'}
+      %>
+    </div>
 
-<br>
+   <%= render "form", post: @post %>
 
-<div>
-  <%= link_to "Show this post", @post %> |
-  <%= link_to "Back to posts", posts_path %>
-</div>
+
+  </div>
+<% end %>

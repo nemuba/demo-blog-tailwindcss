@@ -1,7 +1,12 @@
-class HomeController < ApplicationController
-  def index
-  end
+# frozen_string_literal: true
 
-  def about
+# class HomeController
+class HomeController < ApplicationController
+  def index; end
+
+  def clear_message
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 end

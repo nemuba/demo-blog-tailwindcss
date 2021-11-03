@@ -14,10 +14,14 @@
 <body>
   <%= render partial: 'shared/navbar' %>
 
-  <% if notice %>
-    <div class="px-4 py-3 leading-normal text-blue-700 border border-blue-500 rounded-lg" role="alert">
-      <p class="text-sm"><%= notice %></p>
-    </div>
+  <%= turbo_frame_tag :notice do %>
+    <% if notice %>
+      <%= notice_stream(message: notice, status: :info) %>
+    <% end %>
+
+    <% if alert %>
+      <%= notice_stream(message: alert, status: :error) %>
+    <% end %>
   <% end %>
 
   <div class="container mx-auto mt-5">

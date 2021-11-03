@@ -1,0 +1,7 @@
+<div class="trix-content">
+  <% unless action_name == 'show' %>
+    <%= sanitize(yield.slice(0..300), tags: [:div]) %>
+  <% else %>
+    <%= yield -%>
+  <% end %>
+</div>

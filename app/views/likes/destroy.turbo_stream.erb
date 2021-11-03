@@ -1,0 +1,7 @@
+<%= turbo_stream.replace 'notice' do %>
+  <%= turbo_frame_tag :notice %>
+<% end %>
+
+<%= notice_stream(message: t('like.messages.destroy'), status: :error ) %>
+
+<%= turbo_stream.replace @post %>

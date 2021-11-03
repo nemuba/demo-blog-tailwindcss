@@ -1,10 +1,11 @@
 
-<div class="bg-white border shadow-md rounded-md min-h-screen w-4/3 mx-auto">
-  <h1 class="text-lg text-center text-4xl text-gray-500 p-3 mt-4">Blog - Posts </h1>
+<div class="bg-white border shadow-md rounded-md pb-12 w-4/3 mx-auto px-4 min-h-screen">
   
   <%= turbo_frame_tag :posts, src: posts_path, loading: :lazy do %>
+    <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Posts </h1>
+    
     <% 3.times do %>
-       <%= render partial: 'shared/loading' %>
+      <%= render partial: 'shared/loading' %>
     <% end %>
   <% end %>
 </div>
