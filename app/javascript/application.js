@@ -12,4 +12,5 @@ window.addEventListener("turbo:load", () => {
   btn.addEventListener("click", () => {
     menu.classList.toggle("hidden");
   });
+
 })

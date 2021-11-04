@@ -5,7 +5,7 @@
       <%= button_to 'Excluir Post',
         post_path(@post),
         method: :delete,
-        class: 'btn-danger mx-4',
+        class: 'btn-danger mx-1',
         'data-turbo-frame': '_top',
         data: { controller: 'confirm', confirm_message_value: t('messages.delete'), action: 'click->confirm#destroy'}
       %>

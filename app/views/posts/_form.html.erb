@@ -5,7 +5,7 @@
       controller: 'form', 
       action: 'submit->form#clear',
     },
-    class: 'mx-20 border-b shadow-lg px-10'
+    class: 'mx-10 border-b shadow-lg px-10'
   }) do |form| %>
   <% if post.errors.any? %>
     <div class="w-full p-2 border border-red-500 rounded-md mt-5">
@@ -18,6 +18,26 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="my-5" data-controller="tag-list" data-tag-list-list-value="<%= post.tags.pluck(:name) %>">
+      
+    <h1>Tags:</h1>
+    <div class="flex flex-wrap w-full p-2 border-gray-400 shadow-md mb-5 rounded-md" data-tag-list-target="tagList">
+        <div class="flex flex-wrap">
+        <%= form.fields_for :tags do |tag| %>
+            <span class="flex flex-wrap font-bold normal-case p-1 bg-green-500 rounded-md text-white mx-2">
+              <%= tag.hidden_field :id %>
+              <%= tag.label :name, class: 'm-2 form-label text-white normal-case', value: tag.object.name %>
+              <%= tag.check_box :_destroy, class: 'h-4 w-4 ml-2 self-center p-2 border-gray-200' %>
+              <span class="ml-1 text-xs self-center">Excluir?</span>
+            </span>
+        <% end %>
+       </div>
+    </div>
+    <label class="form-label">Adicione tags</label>
+    <input type="text" class="form-control" data-tag-list-target="tagInput">
+    <button data-action="click->tag-list#change">Adicionar</button>
+  </div>
 
   <div class="my-5">
     <%= form.label :title, class: 'form-label' %>

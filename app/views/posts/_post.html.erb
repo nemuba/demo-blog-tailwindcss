@@ -9,6 +9,8 @@
       <%= post.user.name %>
       <strong class="text-gray-400 ml-4">Published:</strong>
       <%= post.created_at.strftime('%d/%m/%Y') %>
+      <strong class="text-gray-400 ml-4">Tags:</strong>
+      <%= post.tags.pluck(:name).join(', ') %>
     </p>
 
     <%= post.content %>

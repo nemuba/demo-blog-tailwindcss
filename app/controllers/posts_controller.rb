@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.includes(:tags, :likes, :comments).all.order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -67,6 +67,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :content, :user_id)
+    params.require(:post).permit(:title, :content, :user_id, tags_attributes: %i[id name _destroy])
   end
 end

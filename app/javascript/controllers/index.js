@@ -8,3 +8,6 @@ application.register("confirm", ConfirmController)
 
 import FormController from "./form_controller.js"
 application.register("form", FormController)
+
+import TagListController from "./tag_list_controller.js"
+application.register("tag-list", TagListController)
