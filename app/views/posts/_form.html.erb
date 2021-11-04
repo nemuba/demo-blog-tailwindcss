@@ -35,8 +35,13 @@
        </div>
     </div>
     <label class="form-label">Adicione tags</label>
-    <input type="text" class="form-control" data-tag-list-target="tagInput">
-    <button data-action="click->tag-list#change">Adicionar</button>
+    <input 
+      type="text"
+      class="form-control"
+      data-tag-list-target="tagInput"
+      placeholder="Adicione tags separadao por virgula"      
+    >
+    <button type="button" class="btn-primary p-1 my-2" data-action="click->tag-list#change">Adicionar tag</button>
   </div>
 
   <div class="my-5">

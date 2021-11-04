@@ -49,7 +49,7 @@ export default class extends Controller {
     div.appendChild(span)
     const removeButton = document.createElement('button')
     removeButton.innerHTML = 'X'
-    removeButton.classList.add('btn-secondary', 'p-2', 'rounded-full', 'bg-gray-500', 'text-sm')
+    removeButton.classList.add('btn-secondary', 'rounded-full', 'bg-red-400', 'text-sm', 'font-bold')
     removeButton.setAttribute('data-action', 'click->tag-list#removeTag')
     removeButton.setAttribute('type', 'button')
 
