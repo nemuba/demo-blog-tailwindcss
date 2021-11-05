@@ -32,8 +32,10 @@
     <p class="text-gray-600 mb-5">
       <strong class="text-gray-500">Author:</strong>
       <%= @post.user.name %>
-      <strong class="text-gray-400 ml-4">Published:</strong>
+      <strong class="text-gray-400 ml-4">Criado em:</strong>
       <%= @post.created_at.strftime('%d/%m/%Y') %>
+      <strong class="text-gray-400 ml-4">Tags:</strong>
+      <%= @post.tags.pluck(:name).join(', ') %>
     </p>
 
     <%= @post.content %>

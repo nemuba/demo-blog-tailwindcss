@@ -1,4 +1,4 @@
-@import url('actiontext.css');
+@import url('./actiontext.css');
 
 @tailwind base;
 @tailwind components;

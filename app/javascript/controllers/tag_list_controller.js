@@ -12,6 +12,20 @@ export default class extends Controller {
     this.addTag()
   }
 
+  remove(event) {
+    event.preventDefault();
+
+    const classes = Array.from(event.target.parentElement.classList)
+
+    if (classes.includes('bg-green-500')) {
+      event.target.parentElement.classList.remove('bg-green-500')
+      event.target.parentElement.classList.add('bg-red-500')
+    } else {
+      event.target.parentElement.classList.remove('bg-red-500')
+      event.target.parentElement.classList.add('bg-green-500')
+    }
+  }
+
   addTag() {
     const tags = this.tagInputTarget.value.split(',')
 
