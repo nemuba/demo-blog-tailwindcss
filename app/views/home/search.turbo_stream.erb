@@ -1,0 +1,19 @@
+<% if @posts.present? %>
+  <%= notice_stream(message: 'Pesquisa realizada com sucesso', status: :success) %>
+<% else %>
+  <%= notice_stream(message: 'Pesquisa realizada, nada foi encontrado !', status: :info) %>
+<% end %>
+
+<%= turbo_stream.replace 'title' do %>
+  <%= turbo_frame_tag :title do %>
+    <%= "<h1 class='text-4xl text-gray-500 p-3 mt-4'>Resultado(s): #{@count} encontrado(s).</h1>".html_safe %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.replace :posts do %>
+  <%= turbo_frame_tag :posts do %>
+    <%= render partial: 'posts/post', collection: @posts, as: :post %>
+  <% end %>
+<% end %>
+      
+

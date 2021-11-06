@@ -1,7 +1,20 @@
 
 <div class="bg-white border shadow-md rounded-md pb-12 w-4/3 mx-auto px-4 min-h-screen">
+  <div class="w-full flex flex-wrap border-b shadow-b">
+    <div class="w-1/4 text-center text-4xl text-gray-400 p-4">Pesquisar</div>
+    <div class="w-3/4 text-center self-center">
+      <%= form_tag('/search', method: :post, data: { controller: 'search', action: 'turbo:submit-end->search#perform' }) do %>
+        <%= text_field_tag :q, nil,  class: 'w-full p-3 text-3xl border rounded-md', placeholder: 'Digite um termo' %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= turbo_frame_tag 'title' do %>
+    <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Últimos Posts </h1>
+  <% end %>
+
   <%= turbo_frame_tag :posts, src: posts_path, loading: :lazy do %>
-    <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Posts </h1>
+    <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Últimos Posts </h1>
     
     <% 3.times do %>
       <%= render partial: 'shared/loading' %>

@@ -13,4 +13,6 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   validates_presence_of :content
+
+  scope :search, ->(title) { includes(:likes, :tags, :comments).where(title: title) }
 end

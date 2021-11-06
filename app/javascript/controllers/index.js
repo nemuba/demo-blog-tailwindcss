@@ -9,5 +9,8 @@ application.register("confirm", ConfirmController)
 import FormController from "./form_controller.js"
 application.register("form", FormController)
 
+import SearchController from "./search_controller.js"
+application.register("search", SearchController)
+
 import TagListController from "./tag_list_controller.js"
 application.register("tag-list", TagListController)
