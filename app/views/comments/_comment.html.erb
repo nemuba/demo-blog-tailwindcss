@@ -2,15 +2,18 @@
   <div class="w-full border-b shadow-md p-2 rounded-md p-4">
     <p><%= comment.user.name %></p>
     <%= comment.message %>
-    <p class="text-gray-500 font-normal">Criado em: <%= comment.created_at.strftime('%d/%m/%Y') %></p>
 
-    <% if user_signed_in? && current_user.id == comment.user_id %>
-      <%= button_to 'Excluir', 
+    <div class="w-full flex flex-wrap">
+      <p class="ml-10 text-gray-500 font-normal order-2 self-center">Criado em: <%= comment.created_at.strftime('%d/%m/%Y') %></p>
+
+      <% if user_signed_in? && current_user.id == comment.user_id %>
+      <%= button_to 'Excluir comentário', 
         post_comment_path(comment.post, comment),
         method: :delete,
-        class: 'btn-danger p-2 mt-4',
+        class: 'text-gray-500 p-1 order-1 self-center bg-gray-100 rounded-md hover:bg-gray-200',
         data: { controller: 'confirm', confirm_message_value: t('messages.delete'), action: 'click->confirm#destroy'}
       %>
     <% end %>
+    </div>
   </div>
 <% end %>

@@ -11,4 +11,6 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :tags, allow_destroy: true
 
   validates :title, presence: true
+
+  validates_presence_of :content
 end

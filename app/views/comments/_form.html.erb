@@ -5,11 +5,12 @@
       controller: 'form', 
       action: 'submit->form#clear',
     },
+    id: 'comment-form',
     class: 'w-full border-b shadow-lg px-10'
   }) do |form| %>
   <% if comment.errors.any? %>
-    <div id="w-full p-2 border border-red-500 rounded-md">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    <div class="w-full p-2 border border-red-500 rounded-md mt-5">
+      <h2 class="font-bold"><%= t('errors.template.header.other', model: comment.model_name.human ,count: comment.errors.count) %></h2>
 
       <ul>
         <% comment.errors.each do |error| %>

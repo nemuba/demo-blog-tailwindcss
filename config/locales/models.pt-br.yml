@@ -2,8 +2,11 @@ pt-br:
   activerecord:
     models:
       post:
-        one: Post
-        other: Posts
+        one: 'Post'
+        other: 'Posts'
+      comment:
+        one: 'Comentário'
+        other: 'Comentários'
     attributes:
       post:
         id: id
@@ -11,3 +14,6 @@ pt-br:
         content: Conteúdo
         created_at: Criado em
         updated_at: Atualizado em
+      comment: 
+        id: id
+        message: 'Mensagem'
