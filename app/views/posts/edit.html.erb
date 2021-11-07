@@ -1,18 +1,6 @@
 <%= turbo_frame_tag dom_id(@post) do %>
 
   <div class="w-full p-5 border-b shadow-md mt-3">
-    <div class="my-5 w-full px-24">
-      <%= button_to 'Excluir Post',
-        post_path(@post),
-        method: :delete,
-        class: 'btn-danger mx-1',
-        'data-turbo-frame': '_top',
-        data: { controller: 'confirm', confirm_message_value: t('messages.delete'), action: 'click->confirm#destroy'}
-      %>
-    </div>
-
    <%= render "form", post: @post %>
-
-
   </div>
 <% end %>
