@@ -6,8 +6,8 @@ ruby "3.0.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.0.alpha2"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# Use pg as the database for Active Record
+gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -69,3 +69,4 @@ group :test do
 end
 
 gem "hotwire-livereload", "~> 0.1.4"
+gem "pg_search"

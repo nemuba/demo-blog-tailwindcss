@@ -2,6 +2,8 @@
 
 # model Post
 class Post < ApplicationRecord
+  include PgSearch::Model
+
   belongs_to :user
   has_rich_text :content
   has_many :likes, dependent: :destroy
@@ -14,5 +16,13 @@ class Post < ApplicationRecord
 
   validates_presence_of :content
 
-  scope :search, ->(title) { includes(:likes, :tags, :comments).where(title: title) }
+  pg_search_scope :pg_search, against: :title, using: { tsearch: { prefix: true } },
+    associated_against: {
+      tags: :name,
+      user: :name,
+    }
+  
+  def self.search(query)
+    pg_search(query)
+  end
 end
