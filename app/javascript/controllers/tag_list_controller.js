@@ -55,15 +55,15 @@ export default class extends Controller {
 
   createTag(tag) {
     const div = document.createElement('div')
-    div.classList.add('flex', 'items-center', 'justify-between', 'my-1', 'flex-wrap')
+    div.classList.add('flex', 'items-center', 'my-1', 'flex-wrap', 'mx-1', 'rounded-md')
     const span = document.createElement('span')
-    span.classList.add('font-bold', 'p-1', 'text-white', 'bg-blue-500', 'rounded', 'mx-1')
+    span.classList.add('p-2', 'text-white', 'bg-blue-500', 'h-10', 'rounded-l', 'font-bold')
     span.innerHTML = tag
 
     div.appendChild(span)
     const removeButton = document.createElement('button')
     removeButton.innerHTML = 'X'
-    removeButton.classList.add('btn-secondary', 'rounded-full', 'bg-red-400', 'text-sm', 'font-bold')
+    removeButton.classList.add('btn-secondary', 'bg-blue-400', 'text-sm', 'p-2', 'h-10', 'rounded-r-1', 'rounded-l-none', 'font-bold')
     removeButton.setAttribute('data-action', 'click->tag-list#removeTag')
     removeButton.setAttribute('type', 'button')
 

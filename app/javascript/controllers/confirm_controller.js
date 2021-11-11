@@ -9,9 +9,9 @@ export default class extends Controller {
       event.preventDefault()
     }
 
-    setTimeout(async () => {
-      const request = new FetchRequest('GET', '/clear_message', { responseKind: 'turbo_stream' })
-      await request.perform()
-    }, 5000)
+    // setTimeout(async () => {
+    //   const request = new FetchRequest('GET', '/clear_message', { responseKind: 'turbo_stream' })
+    //   await request.perform()
+    // }, 5000)
   }
 }

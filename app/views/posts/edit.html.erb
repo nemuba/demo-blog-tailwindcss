@@ -1,6 +1,8 @@
 <%= turbo_frame_tag dom_id(@post) do %>
-
-  <div class="w-full p-5 border-b shadow-md mt-3">
+  <div class="w-full mx-auto">
+    <h1 class="text-3xl text-center font-bold text-gray-500">Editar Post</h1>
+  </div>
+  <div class="w-full p-5 border-b shadow-md">
    <%= render "form", post: @post %>
   </div>
 <% end %>

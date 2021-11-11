@@ -70,3 +70,4 @@ end
 
 gem "hotwire-livereload", "~> 0.1.4"
 gem "pg_search"
+gem "pagy", "~> 5.3"

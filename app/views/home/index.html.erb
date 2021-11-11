@@ -1,10 +1,13 @@
 
 <div class="bg-white border shadow-md rounded-md pb-12 w-4/3 mx-auto px-4 min-h-screen">
   <div class="w-full flex flex-wrap border-b shadow-b">
-    <div class="w-1/4 text-center text-4xl text-gray-400 p-4">Pesquisar</div>
-    <div class="w-3/4 text-center self-center">
+    <div class="lg:w-1/4 sm:w-full xl:w-full  text-center lg:text-4xl text-gray-400 p-4 md:text-2xl sm:text-md">Pesquisar</div>
+    <div class="lg:w-3/4 sm:w-full xl:w-full text-center self-center">
       <%= form_tag('/search', method: :post, data: { controller: 'search', action: 'turbo:submit-end->search#perform' }) do %>
-        <%= text_field_tag :q, nil,  class: 'w-full p-3 text-3xl border rounded-md', placeholder: 'Digite um termo' %>
+        <%= text_field_tag :q, nil, 
+          class: 'lg:w-full md:w-full sm:w-full xs:w-full p-3 lg:text-3xl border rounded-md md:text-lg sm:text-md',
+          placeholder: 'Pesquise por titulo, autor ou tag'
+        %>
       <% end %>
     </div>
   </div>

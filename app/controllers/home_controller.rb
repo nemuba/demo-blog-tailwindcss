@@ -4,18 +4,12 @@
 class HomeController < ApplicationController
   def index; end
 
-  def clear_message
-    respond_to do |format|
-      format.turbo_stream
-    end
-  end
-
   def search
     @posts = []
     @count = 0
 
     if params[:q].present?
-      @posts = Post.search(params[:q])
+      @pagy, @posts = pagy(Post.search(params[:q]), page: 1)
       @count = @posts.count
     end
 
