@@ -16,6 +16,8 @@
     <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Últimos Posts </h1>
   <% end %>
 
+  <%= turbo_stream_from :posts %>
+  
   <%= turbo_frame_tag :posts, src: posts_path, loading: :lazy do %>
     <h1 class="text-center text-4xl text-gray-500 p-3 mt-4">Blog - Últimos Posts </h1>
     

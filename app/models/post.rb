@@ -12,6 +12,10 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :tags, allow_destroy: true
 
+  after_create_commit { broadcast_append_to 'posts', self }
+  after_update_commit { broadcast_replace_to 'posts', self }
+  after_destroy_commit { broadcast_remove_to 'posts', self }
+
   validates :title, presence: true
 
   validates_presence_of :content
